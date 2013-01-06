@@ -1,0 +1,9 @@
+permalink:   /:categories/:year/:month/:day/:title
+auto:        true
+pygments:    true
+
+title : François Klingler
+url: http://blog.fklingler.com
+author :
+  name : François Klingler
+  email : contact@fklingler.com
