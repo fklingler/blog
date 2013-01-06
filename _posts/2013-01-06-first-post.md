@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Test
+title: First post
 ---
 
 06 Jan 2013 - Montreal
 {.meta}
 
-Test blablablabla
+First post! More incoming :-).
