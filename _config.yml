@@ -1,6 +1,7 @@
 permalink:   /:categories/:year/:month/:day/:title
 auto:        true
 pygments:    true
+include:     [.htaccess]
 
 title : François Klingler
 url: http://blog.fklingler.com
