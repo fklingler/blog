@@ -4,7 +4,7 @@ pygments:    true
 include:     [.htaccess]
 
 title : François Klingler
-url: http://blog.fklingler.com
+url: http://fklingler.com
 author :
   name : François Klingler
   email : contact@fklingler.com
