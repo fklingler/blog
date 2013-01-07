@@ -3,9 +3,11 @@ layout: default
 ---
 <div id="post">
   <h1>{{ page.title }}</h1>
+  <p class="meta">{{ page.date | date_to_string }}{%if page.meta %} - {{ page.meta }}{% endif %}</p>
   {{ content }}
 </div>
 
+{% if page.no_related == null %}
 <div id="related">
   <h2>Related Posts</h2>
   <ul class="posts">
@@ -14,3 +16,8 @@ layout: default
     {% endfor %}
   </ul>
 </div>
+{% endif %}
+
+{% if page.no_comments == null %}
+  {% include disqus.html %}
+{% endif %}
