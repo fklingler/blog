@@ -194,6 +194,10 @@ ul.posts {
 
 /* footnotes */
 
+#post sup a[rel="footnote"] {
+  font-size: 0.9em;
+}
+
 #post .footnotes a[rel="reference"] {
   margin-left: 0.5em;
 }
