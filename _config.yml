@@ -3,6 +3,7 @@ auto:        true
 pygments:    true
 markdown:    kramdown
 include:     [.htaccess]
+exclude:     [README.md]
 
 title : François Klingler
 url: http://fklingler.com
