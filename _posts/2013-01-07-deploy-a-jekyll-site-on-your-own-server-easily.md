@@ -48,7 +48,7 @@ pc:~/blog$ git push -u origin master
 
 But there is one problem here: you must commit the changes in the `_site` directory, so you must run `jekyll` before committing your changes.\\
 It differs from the way you would do it with GitHub Pages, where you can put the `_site` directory in the `.gitignore` file, since GitHub Pages will process your files with `jekyll` on its own.\\
-It's a huge problem for me, since I run `jekyll --auto --server` when I write my posts to check how they are rendered, but if you really want it you can write a pre-commit hook to run `jekyll` and add the `_site` directory to the staging index before you commit.  
+It's not a huge problem for me, since I run `jekyll --auto --server` when I write my posts to check how they are rendered, but if you really want it you can write a pre-commit hook to run `jekyll` and add the `_site` directory to the staging index before you commit.  
 Be careful, it can cause you some trouble when you are not in a classic writing post workflow!
 
 {: .terminal}
