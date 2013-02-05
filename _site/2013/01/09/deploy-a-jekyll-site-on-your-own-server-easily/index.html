@@ -22,18 +22,18 @@
   
   <div id="post">
   <h1>Deploy a Jekyll site on your own server easily</h1>
-  <p class="meta">07 Jan 2013</p>
-  <p>When I looked at <a href="http://www.jekyll.rb">Jekyll</a> to generate my static blog, the obvious choice to host it was to deploy it on the <a href="http://pages.github.com">GitHub Pages</a>. But for many reasons (including to keep my domain pointing to my server), I didn’t want to do it that way, and wanted to host it on my own server.</p>
+  <p class="meta">09 Jan 2013</p>
+  <p>When I thought about <a href="http://www.jekyll.rb">Jekyll</a> to generate my static blog, the obvious choice to host it was to deploy it on the <a href="http://pages.github.com">GitHub Pages</a>. But for many reasons (including to keep my domain pointing to my server), I didn’t want to do it that way and wanted to host it on my own server.</p>
 
-<p>I then looked at an easy way to deploy my blog<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>, if possible just by doing a <code>git push</code>, just like you’d do it if you hosted the site on GitHub Pages.</p>
+<p>I then looked for an easy way to deploy my blog<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>, if possible just by doing a <code>git push</code>, just like you’d do it if you hosted the site on GitHub Pages.</p>
 
-<p>To do so, you must first create a bare git repository on the server, on which you will be able to push (if the repository is not bare, you are not able to push to it).</p>
+<p>To do so, you must create a <strong>bare</strong> git repository on the server first, to which you will be able to push your site (if the repository is not bare, you are not able to push to it).</p>
 
 <pre class="terminal"><code>server:~/www/$ git init --bare blog.git
 </code></pre>
 
-<p>Since it is a bare repository, it will not have any index and you will not have any <code>_site</code> directory available to serve with your web server.<br />
-To be able to access to the <code>_site</code> directory on the server, you can just clone the repository after each push. You can do that easily with a <code>post-receive</code> git hook on the server repository :</p>
+<p>Since it is a bare repository, it won’t have any index and you won’t have any <code>_site</code> directory available to be served by your web server.<br />
+To be able to access to the <code>_site</code> directory on the server, you can just clone the repository after each push. You can easily do that with a <code>post-receive</code> git hook on the server repository :</p>
 
 <pre class="terminal"><code>server:~/www/$ vim blog.git/hooks/post-receive
 </code></pre>
@@ -48,19 +48,19 @@ rsync -av --delete-after <span class="nv">$TMP_GIT_CLONE</span>/_site/ <span cla
 rm -rf <span class="nv">$TMP_GIT_CLONE</span>
 </code></pre></div>
 
-<p>This script is quite simple, it just clones the repository to a temp directory, copy the <code>_site</code> directory to the directory served by the http server (here <code>~/www/blog</code>), and finally clean the temp directory.<br />
-<code>rsync</code> is used here to have the lowest downtime possible on the site, compared to delete the previous directory then move the new one.</p>
+<p>This script is quite simple, it just clones the repository to a temp directory, copies the <code>_site</code> directory to the directory served by the http server (here <code>~/www/blog</code>), and finally deletes the temp directory.<br />
+<code>rsync</code> is used here to have the shortest possible downtime on the site, compared to deleting the previous directory then moving the new one.</p>
 
-<p>Now, just by doing a push to the server, you site will be automatically updated!</p>
+<p>Now, just by pushing to the server, you site will be automatically updated!</p>
 
 <pre class="terminal"><code>pc:~/blog$ git remote add origin ssh://server/~/www/blog.git
 pc:~/blog$ git push -u origin master
 </code></pre>
 
-<p>There is one problem here: you must commit the changes on the <code>_site</code> directory, so you must run <code>jekyll</code> before committing your changes.<br />
+<p>But there is one problem here: you must commit the changes in the <code>_site</code> directory, so you must run <code>jekyll</code> before committing your changes.<br />
 It differs from the way you would do it with GitHub Pages, where you can put the <code>_site</code> directory in the <code>.gitignore</code> file, since GitHub Pages will process your files with <code>jekyll</code> on its own.<br />
-I don’t think it’s a huge problem, since I run <code>jekyll --auto --server</code> when I write my posts to be able to look how my posts render, but if you really want it you can write a pre-commit hook to run <code>jekyll</code> and add the <code>_site</code> directory to the staging index before you commit.<br />
-Be careful, it can give you some trouble when you are not in a classic writing post workflow!</p>
+It’s not a huge problem for me, since I run <code>jekyll --auto --server</code> when I write my posts to check how they are rendered, but if you really want it you can write a pre-commit hook to run <code>jekyll</code> and add the <code>_site</code> directory to the staging index before you commit.<br />
+Be careful, it can cause you some trouble when you are not in a classic writing post workflow!</p>
 
 <pre class="terminal"><code>pc:~/blog$ vim .git/hooks/pre-commit
 </code></pre>
@@ -70,14 +70,14 @@ jekyll --no-auto
 git add _site
 </code></pre></div>
 
-<p>Here we are, you can now just write a post, commit them, push, and your post will be on the web!</p>
+<p>Here we are, you can now just write a post, commit it, push, and your post will be on the web!</p>
 
 <hr />
 
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Note that you can use this method with any site you have, would you use Jekyll or not.<a href="#fnref:1" rel="reference">&#8617;</a></p>
+      <p>Note that you can use this method with any of your sites, would you use Jekyll or not.<a href="#fnref:1" rel="reference">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -100,8 +100,8 @@ git add _site
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'fklingler'; // required: replace example with your forum shortname
-    var disqus_identifier = '/2013/01/07/deploy-a-jekyll-site-on-your-own-server-easily';
-    var disqus_url = 'http://fklingler.com/2013/01/07/deploy-a-jekyll-site-on-your-own-server-easily';
+    var disqus_identifier = '/2013/01/09/deploy-a-jekyll-site-on-your-own-server-easily';
+    var disqus_url = 'http://fklingler.com/2013/01/09/deploy-a-jekyll-site-on-your-own-server-easily';
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
