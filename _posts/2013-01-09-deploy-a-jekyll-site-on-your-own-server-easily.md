@@ -4,7 +4,7 @@ title: Deploy a Jekyll site on your own server easily
 tags: jekyll, git, deployment, server
 ---
 
-When I thought about [Jekyll](http://www.jekyll.rb) to generate my static blog, the obvious choice to host it was to deploy it on the [GitHub Pages](http://pages.github.com). But for many reasons (including to keep my domain pointing to my server), I didn't want to do it that way and wanted to host it on my own server.
+When I thought about [Jekyll](http://www.jekyllrb.com) to generate my static blog, the obvious choice to host it was to deploy it on the [GitHub Pages](http://pages.github.com). But for many reasons (including to keep my domain pointing to my server), I didn't want to do it that way and wanted to host it on my own server.
 
 I then looked for an easy way to deploy my blog[^1], if possible just by doing a `git push`, just like you'd do it if you hosted the site on GitHub Pages.
 
